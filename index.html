@@ -121,8 +121,8 @@ body.inner .hero { display: none; }
 @media (prefers-reduced-motion: reduce) {
 .view, .hero-photo img { animation: none; transition: none; }
 }
-.pair { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto repeat(6, auto); column-gap: 4rem; }
-.pair > div { display: grid; grid-row: span 7; grid-template-rows: subgrid; counter-reset: n; align-content: start; }
+.pair { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto repeat(7, auto); column-gap: 4rem; }
+.pair > div { display: grid; grid-row: span 8; grid-template-rows: subgrid; counter-reset: n; align-content: start; }
 .pair ol.num { display: contents; }
 .pair ol.num li { align-items: start; padding: .6rem 0; border-top: 1px solid var(--line); }
 .pair ol.num li:last-child { border-bottom: 1px solid var(--line); }
@@ -149,6 +149,18 @@ body.inner .hero { display: none; }
 .foot-btn { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: .2em; }
 .foot-btn:hover { color: var(--link); }
 @media (max-width: 820px) { .bar-right { display: none; } }
+.search-btn { gap: .4rem; padding-right: .35rem; }
+.search-btn kbd { font: inherit; font-size: .72rem; color: var(--faint); border: 1px solid var(--line); border-radius: 4px; padding: 0 .3rem; margin-left: .15rem; }
+.palette li { flex-direction: column; gap: .1rem; }
+.palette .r-top { display: flex; justify-content: space-between; gap: 1rem; }
+.palette .r-label { color: var(--ink); }
+.palette .r-hint { color: var(--faint); font-size: .82rem; white-space: nowrap; }
+.palette .r-snip { color: var(--muted); font-size: .88rem; line-height: 1.45; }
+.palette mark { background: color-mix(in srgb, var(--link) 22%, transparent); color: inherit; border-radius: 2px; padding: 0 1px; }
+.palette .group { font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); padding: .6rem .7rem .25rem; cursor: default; }
+.flash { animation: flash 1.8s ease; border-radius: 4px; }
+@keyframes flash { 0%, 35% { background: color-mix(in srgb, var(--link) 16%, transparent); } 100% { background: transparent; } }
+@media (prefers-reduced-motion: reduce) { .reveal, .flash, .palette.open { animation: none !important; } }
 </style>
 </head>
 <body>
@@ -163,7 +175,7 @@ body.inner .hero { display: none; }
 <li><a href="#debate" data-nav="debate">Debate</a></li>
 <li><a href="#miscellaneous" data-nav="miscellaneous">Miscellaneous</a></li>
 </ul>
-<div class="bar-right"><a href="mailto:nikhildaniel@college.harvard.edu">Email me ↗</a><button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle light and dark mode"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" style="display:block"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button><button class="icon-btn" id="k-btn" type="button" aria-label="Open quick menu">⌘K</button></div>
+<div class="bar-right"><button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle light and dark mode"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" style="display:block"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button><button class="icon-btn search-btn" id="k-btn" type="button" aria-label="Search the site"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Search<kbd>⌘K</kbd></button></div>
 </div>
 </div>
 <main id="content-start" tabindex="-1" class="views" style="outline:none">
@@ -179,8 +191,8 @@ body.inner .hero { display: none; }
 <div class="bio">
 <p>I’m a first-year at Harvard studying Social Studies and Statistics. I’m interested in how societies govern powerful technologies, international markets, and geopolitical risk.</p>
 <p>Right now, I do AI and policy research with <a href="https://www.radcliffe.harvard.edu/people/orit-shaer">Orit Shaer</a>, a fellow at the <a href="https://www.radcliffe.harvard.edu/">Harvard Radcliffe Institute</a>. I’m also an AI Policy Fellow with Harvard’s <a href="https://aisst.ai/">AI Safety Student Team</a>.</p>
-<p>Outside of that, I compete with the <a href="https://www.harvarddebatingunion.org/">Harvard College Debating Union</a>, am an associate for Ambassador Chris Lu at the <a href="https://iop.harvard.edu/">Institute of Politics</a>, and serve on the advisory board of <a href="https://www.outreachdebate.com/">Outreach Debate</a>, a nonprofit that makes speech and debate accessible to students around the world, where I was previously an executive.</p>
-<p>Before Harvard, I spent most of my time on journalism, debate, housing policy, and geopolitics. I was twice named Florida Journalist of the Year (Online and Emerging), was ranked third in the country in <a href="https://www.speechanddebate.org/public-forum-debate/">Public Forum debate</a>, won the <a href="https://www.congressionalappchallenge.us/">Congressional App Challenge</a> for Rep. Maxwell Frost’s district, and had work published through the <a href="https://www.ohchr.org/en/treaty-bodies/ccpr">UN Human Rights Committee</a>. I was also deeply involved in housing research and policy, and worked on technology innovation at the <a href="https://www.hsncfl.org/">Homeless Services Network of Central Florida</a>.</p>
+<p>Outside of that, I co-founded <a href="https://clusion.io/">Clusion</a>, a prep and rankings platform for competitive speech and debate. I also compete with the <a href="https://www.harvarddebatingunion.org/">Harvard College Debating Union</a>, am an associate for Ambassador Chris Lu at the <a href="https://iop.harvard.edu/">Institute of Politics</a>, and serve on the advisory board of <a href="https://www.outreachdebate.com/">Outreach Debate</a>, a nonprofit that makes speech and debate accessible to students around the world, where I was previously an executive.</p>
+<p>Before Harvard, I spent most of my time on journalism, debate, housing policy, and geopolitics. I was twice named Florida Journalist of the Year (Online and Emerging), was ranked third in the country in <a href="https://www.speechanddebate.org/public-forum-debate/">Public Forum debate</a>, won the <a href="https://www.congressionalappchallenge.us/">Congressional App Challenge</a> for Rep. Maxwell Frost’s district with software that helps homeless service providers manage their work, and had work published through the <a href="https://www.ohchr.org/en/treaty-bodies/ccpr">UN Human Rights Committee</a>. I was also deeply involved in housing research and policy, and worked on technology innovation at the <a href="https://www.hsncfl.org/">Homeless Services Network of Central Florida</a>.</p>
 </div>
 <div class="cols">
 <div class="pair">
@@ -188,6 +200,7 @@ body.inner .hero { display: none; }
 <h2>What I’m up to</h2>
 <ol class="num">
 <li><span>Studying Social Studies and Statistics at <a href="https://college.harvard.edu/">Harvard</a></span></li>
+<li><span>Co-founder of <a href="https://clusion.io/">Clusion</a>, a debate prep platform</span></li>
 <li><span>AI and policy research with <a href="https://www.radcliffe.harvard.edu/people/orit-shaer">Orit Shaer</a> at the <a href="https://www.radcliffe.harvard.edu/">Radcliffe Institute</a></span></li>
 <li><span>AI Policy Fellow at the <a href="https://aisst.ai/">AI Safety Student Team</a></span></li>
 <li><span>Competing with the <a href="https://www.harvarddebatingunion.org/">Harvard College Debating Union</a></span></li>
@@ -200,7 +213,7 @@ body.inner .hero { display: none; }
 <ol class="num">
 <li><span>Twice named Florida Journalist of the Year (Online and Emerging)</span></li>
 <li><span>Ranked third in the country in <a href="https://www.speechanddebate.org/public-forum-debate/">Public Forum debate</a></span></li>
-<li><span>Won the <a href="https://www.congressionalappchallenge.us/">Congressional App Challenge</a> for Rep. Maxwell Frost’s district</span></li>
+<li><span>Won the <a href="https://www.congressionalappchallenge.us/">Congressional App Challenge</a> with software for homeless service providers</span></li>
 <li><span>Published through the <a href="https://www.ohchr.org/en/treaty-bodies/ccpr">UN Human Rights Committee</a></span></li>
 <li><span>Technology innovation at the <a href="https://www.hsncfl.org/">Homeless Services Network of Central Florida</a></span></li>
 <li><span>Executive at <a href="https://www.outreachdebate.com/">Outreach Debate</a></span></li>
@@ -253,7 +266,7 @@ body.inner .hero { display: none; }
 <span class="when">High school</span>
 <div>
 <p class="what">Winner, <a href="https://www.congressionalappchallenge.us/">Congressional App Challenge</a>, Florida’s 10th District</p>
-<p class="detail">Selected by Rep. Maxwell Frost as the winning app for his district in the House of Representatives’ nationwide coding competition for middle and high school students.</p>
+<p class="detail">Selected by Rep. Maxwell Frost as the winning app for his district in the House of Representatives’ nationwide coding competition for middle and high school students. The app helps homeless service providers manage their work.</p>
 </div>
 </li>
 </ul>
@@ -293,6 +306,13 @@ body.inner .hero { display: none; }
 <li>
 <span class="when">Ongoing</span>
 <div>
+<p class="what">Co-founder, <a href="https://clusion.io/">Clusion</a></p>
+<p class="detail">A platform for competitive speech and debate that brings rankings, a searchable evidence bank, an AI card cutter, judge reviews, tournament planning, and a coach and judge marketplace into one place. Debaters at schools including Harvard, Stanford, and Princeton use it.</p>
+</div>
+</li>
+<li>
+<span class="when">Ongoing</span>
+<div>
 <p class="what">Advisory board member and former executive, <a href="https://www.outreachdebate.com/">Outreach Debate</a></p>
 <p class="detail">A 501(c)(3) nonprofit that makes public speaking and debate more accessible to students worldwide through free camps, learning resources, and an online community spanning dozens of cities across countries including Vietnam, India, Kazakhstan, the United States, and Canada.</p>
 </div>
@@ -317,7 +337,7 @@ body.inner .hero { display: none; }
 <footer>
 <div class="container">
 <span class="sig"><svg class="mark" viewBox="-52 -52 104 104" aria-hidden="true"><circle r="50"/><ellipse class="lat" rx="50" ry="0"/><g id="meridians"></g></svg>Built by Nikhil Daniel, 2026</span>
-<span><button class="foot-btn" id="foot-theme" type="button">Theme</button> &nbsp; <a href="https://www.linkedin.com/in/nikhil-daniel26/">LinkedIn</a> &nbsp; <a href="mailto:nikhildaniel@college.harvard.edu">Email</a></span>
+<span><button class="foot-btn" id="foot-search" type="button">Search</button> &nbsp; <button class="foot-btn" id="foot-theme" type="button">Theme</button> &nbsp; <a href="https://www.linkedin.com/in/nikhil-daniel26/">LinkedIn</a> &nbsp; <a href="mailto:nikhildaniel@college.harvard.edu">Email</a></span>
 </div>
 </footer>
 <script>
@@ -352,9 +372,9 @@ window.addEventListener("hashchange", show);
 show();
 })();
 </script>
-<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Quick menu">
+<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Search">
 <div class="palette-box">
-<input id="palette-input" type="text" placeholder="Jump to a page or link…" autocomplete="off" spellcheck="false">
+<input id="palette-input" type="text" placeholder="Search the site…" autocomplete="off" spellcheck="false" aria-label="Search the site">
 <ul id="palette-list" role="listbox"></ul>
 </div>
 </div>
@@ -381,7 +401,21 @@ for (var i = 0; i < left.length; i++) { link(left[i], right[i]); if (right[i]) l
 }
 document.querySelectorAll(".view").forEach(function (v) { var n = 0; v.querySelectorAll(".bio p, .pair li, .entries li, .page-head, .sub").forEach(function (el) { el.classList.add("reveal"); el.style.setProperty("--i", n++); }); });
 
-var items = [
+var PAGE_NAMES = { home: "Overview", research: "Research", writing: "Writing", debate: "Debate", miscellaneous: "Miscellaneous" };
+var index = [];
+document.querySelectorAll(".view").forEach(function (v) {
+var view = v.getAttribute("data-view");
+v.querySelectorAll(".bio p, .pair li, .entries li, .sub").forEach(function (el) {
+var src = el.matches(".entries li") ? (el.querySelector("div") || el) : el;
+var text = src.textContent.replace(/\s+/g, " ").trim();
+var titleEl = el.querySelector(".what, h2");
+var title = titleEl ? titleEl.textContent.replace(/\s+/g, " ").trim() : "";
+var section = el.closest(".pair > div"); var sh = section ? section.querySelector("h2") : null;
+if (!title) title = sh ? sh.textContent.trim() : (el.matches(".bio p") ? "About" : PAGE_NAMES[view]);
+index.push({ view: view, el: el, text: text, title: title });
+});
+});
+var commands = [
 { label: "Overview", hint: "Page", run: function () { location.hash = ""; } },
 { label: "Research", hint: "Page", run: function () { location.hash = "research"; } },
 { label: "Writing", hint: "Page", run: function () { location.hash = "writing"; } },
@@ -392,32 +426,54 @@ var items = [
 { label: "LinkedIn", hint: "Opens in new tab", run: function () { window.open("https://www.linkedin.com/in/nikhil-daniel26/", "_blank", "noopener"); } },
 { label: "Toggle light / dark mode", hint: "Theme", run: toggleTheme }
 ];
+function goTo(entry) {
+location.hash = entry.view === "home" ? "" : entry.view;
+setTimeout(function () { entry.el.scrollIntoView({ block: "center", behavior: "smooth" }); entry.el.classList.remove("flash"); void entry.el.offsetWidth; entry.el.classList.add("flash"); }, 80);
+}
+function snippet(text, q) {
+var i = text.toLowerCase().indexOf(q); if (i < 0) return { pre: text.slice(0, 110), hit: "", post: text.length > 110 ? "…" : "" };
+var start = Math.max(0, i - 45), end = Math.min(text.length, i + q.length + 65);
+return { pre: (start > 0 ? "…" : "") + text.slice(start, i), hit: text.slice(i, i + q.length), post: text.slice(i + q.length, end) + (end < text.length ? "…" : "") };
+}
 var pal = document.getElementById("palette"), input = document.getElementById("palette-input"), list = document.getElementById("palette-list");
 var shown = [], active = 0, lastFocus = null;
-function render() {
-var q = input.value.trim().toLowerCase();
-shown = items.filter(function (it) { return !q || (it.label + " " + it.hint).toLowerCase().indexOf(q) !== -1; });
-if (active >= shown.length) active = 0;
-list.innerHTML = "";
-if (!shown.length) { var e = document.createElement("li"); e.className = "empty"; e.textContent = "No matches"; list.appendChild(e); return; }
-shown.forEach(function (it, i) {
+function addGroup(name) { var g = document.createElement("li"); g.className = "group"; g.textContent = name; list.appendChild(g); }
+function addRow(item, q) {
+var i = shown.length; shown.push(item);
 var li = document.createElement("li"); li.setAttribute("role", "option"); if (i === active) li.className = "active";
-var a = document.createElement("span"); a.textContent = it.label; var b = document.createElement("span"); b.textContent = it.hint;
-li.appendChild(a); li.appendChild(b);
-li.addEventListener("mousemove", function () { if (active !== i) { active = i; render(); } });
+var top = document.createElement("div"); top.className = "r-top";
+var a = document.createElement("span"); a.className = "r-label"; a.textContent = item.label;
+var b = document.createElement("span"); b.className = "r-hint"; b.textContent = item.hint;
+top.appendChild(a); top.appendChild(b); li.appendChild(top);
+if (item.snip) { var s = document.createElement("div"); s.className = "r-snip"; s.appendChild(document.createTextNode(item.snip.pre)); if (item.snip.hit) { var m = document.createElement("mark"); m.textContent = item.snip.hit; s.appendChild(m); } s.appendChild(document.createTextNode(item.snip.post)); li.appendChild(s); }
+li.addEventListener("mousemove", function () { if (active !== i) { active = i; highlight(); } });
 li.addEventListener("click", function () { choose(i); });
 list.appendChild(li);
-});
+}
+function highlight() { var rows = list.querySelectorAll("li[role=option]"); rows.forEach(function (r, i) { r.classList.toggle("active", i === active); }); var cur = rows[active]; if (cur) cur.scrollIntoView({ block: "nearest" }); }
+function render() {
+var q = input.value.trim().toLowerCase();
+shown = []; list.innerHTML = "";
+if (!q) { addGroup("Pages and links"); commands.forEach(function (c) { addRow(c); }); highlight(); return; }
+var terms = q.split(/\s+/);
+var hits = index.filter(function (e) { var t = e.text.toLowerCase(); return terms.every(function (w) { return t.indexOf(w) !== -1; }); }).slice(0, 8);
+var cmds = commands.filter(function (c) { return (c.label + " " + c.hint).toLowerCase().indexOf(q) !== -1; });
+if (hits.length) { addGroup("On this site"); hits.forEach(function (e) { addRow({ label: e.title, hint: PAGE_NAMES[e.view], snip: snippet(e.text, terms[0]), run: function () { goTo(e); } }); }); }
+if (cmds.length) { addGroup("Pages and links"); cmds.forEach(function (c) { addRow(c); }); }
+if (!shown.length) { var e = document.createElement("li"); e.className = "group"; e.textContent = "No results for “" + input.value.trim() + "”"; list.appendChild(e); }
+if (active >= shown.length) active = 0;
+highlight();
 }
 function open() { lastFocus = document.activeElement; pal.classList.add("open"); input.value = ""; active = 0; render(); input.focus(); }
-function close() { pal.classList.remove("open"); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+function close() { pal.classList.remove("open"); if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); }
 function choose(i) { var it = shown[i]; close(); if (it) it.run(); }
 document.getElementById("k-btn").addEventListener("click", open);
+var footSearch = document.getElementById("foot-search"); if (footSearch) footSearch.addEventListener("click", open);
 pal.addEventListener("click", function (e) { if (e.target === pal) close(); });
 input.addEventListener("input", function () { active = 0; render(); });
 input.addEventListener("keydown", function (e) {
-if (e.key === "ArrowDown") { e.preventDefault(); active = (active + 1) % Math.max(shown.length, 1); render(); }
-else if (e.key === "ArrowUp") { e.preventDefault(); active = (active - 1 + shown.length) % Math.max(shown.length, 1); render(); }
+if (e.key === "ArrowDown") { e.preventDefault(); if (shown.length) { active = (active + 1) % shown.length; highlight(); } }
+else if (e.key === "ArrowUp") { e.preventDefault(); if (shown.length) { active = (active - 1 + shown.length) % shown.length; highlight(); } }
 else if (e.key === "Enter") { e.preventDefault(); choose(active); }
 else if (e.key === "Escape") { e.preventDefault(); close(); }
 });
