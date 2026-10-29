@@ -199,6 +199,8 @@ body.inner .hero { display: none; }
 .entries .awards li { display: block; position: relative; padding: 0 0 0 .95rem; border: 0; margin: 0; color: var(--muted); font-size: .97rem; line-height: 1.5; }
 .awards li::before { content: ""; position: absolute; left: 0; top: .62em; width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
 @media (max-width: 820px) { .awards { grid-template-columns: 1fr; } }
+.share-pill { gap: .4rem; vertical-align: middle; color: var(--ink); }
+footer .share-pill { margin-right: .4rem; }
 </style>
 </head>
 <body>
@@ -215,7 +217,7 @@ body.inner .hero { display: none; }
 <li><a href="#debate" data-nav="debate">Debate</a></li>
 
 </ul>
-<div class="bar-right"><button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle light and dark mode"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" style="display:block"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button><button class="icon-btn search-btn" id="k-btn" type="button" aria-label="Search the site"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Search<kbd>⌘K</kbd></button></div>
+<div class="bar-right"><button class="icon-btn share-pill" id="share-btn" type="button" aria-label="Share this site"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" style="display:block"><path d="M8 1.5v8.5M5 4.5L8 1.5l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 7H4a1 1 0 0 0-1 1v5.5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Share</button><button class="icon-btn" id="theme-btn" type="button" aria-label="Toggle light and dark mode"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" style="display:block"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></button><button class="icon-btn search-btn" id="k-btn" type="button" aria-label="Search the site"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Search<kbd>⌘K</kbd></button></div>
 </div>
 </div>
 <main id="content-start" tabindex="-1" class="views" style="outline:none">
@@ -408,7 +410,7 @@ body.inner .hero { display: none; }
 <footer>
 <div class="container">
 <span class="sig"><svg class="mark" viewBox="-52 -52 104 104" aria-hidden="true"><circle r="50"/><ellipse class="lat" rx="50" ry="0"/><g id="meridians"></g></svg>Built by Nikhil Daniel, 2026</span>
-<span><button class="foot-btn" id="foot-search" type="button">Search</button> &nbsp; <button class="foot-btn" id="foot-theme" type="button">Theme</button> &nbsp; <a href="https://www.linkedin.com/in/nikhil-daniel26/">LinkedIn</a> &nbsp; <a href="mailto:nikhildaniel@college.harvard.edu">Email</a></span>
+<span><button class="icon-btn share-pill" id="foot-share" type="button"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" style="display:block"><path d="M8 1.5v8.5M5 4.5L8 1.5l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 7H4a1 1 0 0 0-1 1v5.5a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Share this site</button> <button class="foot-btn" id="foot-search" type="button">Search</button> &nbsp; <button class="foot-btn" id="foot-theme" type="button">Light / dark mode</button> &nbsp; <a href="https://www.linkedin.com/in/nikhil-daniel26/">LinkedIn</a> &nbsp; <a href="mailto:nikhildaniel@college.harvard.edu">Email</a></span>
 </div>
 </footer>
 <script>
@@ -464,6 +466,13 @@ document.querySelectorAll('a[href^="mailto:"]').forEach(function (a) { a.addEven
 document.getElementById("theme-btn").addEventListener("click", toggleTheme);
 var footTheme = document.getElementById("foot-theme"); if (footTheme) footTheme.addEventListener("click", toggleTheme);
 
+function shareSite() {
+var url = location.origin + location.pathname + location.hash;
+var data = { title: "Nikhil Daniel", text: "Nikhil Daniel, Harvard College 2030", url: url };
+if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+if (navigator.clipboard) { navigator.clipboard.writeText(url).then(function () { toast("Link copied to clipboard"); }, function () { toast(url); }); } else { toast(url); }
+}
+["share-btn", "foot-share"].forEach(function (id) { var b = document.getElementById(id); if (b) b.addEventListener("click", shareSite); });
 var pairs = document.querySelectorAll(".pair > div");
 if (pairs.length === 2) {
 var left = pairs[0].querySelectorAll("li"), right = pairs[1].querySelectorAll("li");
@@ -497,6 +506,7 @@ var commands = [
 { label: "Copy email address", hint: EMAIL, run: copyEmail },
 { label: "Send an email", hint: "Mail", run: function () { location.href = "mailto:" + EMAIL; } },
 { label: "LinkedIn", hint: "Opens in new tab", run: function () { window.open("https://www.linkedin.com/in/nikhil-daniel26/", "_blank", "noopener"); } },
+{ label: "Share this site", hint: "Send or copy the link", run: shareSite },
 { label: "Toggle light / dark mode", hint: "Theme", run: toggleTheme }
 ];
 function goTo(entry) {
