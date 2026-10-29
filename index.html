@@ -195,6 +195,10 @@ body.inner .hero { display: none; }
 .card a.card-go:hover { text-decoration: underline; color: var(--link); }
 .card-cover::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
 .card-sub { position: relative; z-index: 1; margin-top: 0; font-size: .86rem; }
+.awards { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: .35rem 1.75rem; }
+.entries .awards li { display: block; position: relative; padding: 0 0 0 .95rem; border: 0; margin: 0; color: var(--muted); font-size: .97rem; line-height: 1.5; }
+.awards li::before { content: ""; position: absolute; left: 0; top: .62em; width: 4px; height: 4px; border-radius: 50%; background: var(--faint); }
+@media (max-width: 820px) { .awards { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -389,7 +393,16 @@ body.inner .hero { display: none; }
 <span class="when">High school</span>
 <div>
 <p class="what"><a href="https://www.speechanddebate.org/public-forum-debate/">Public Forum debate</a>, ranked as high as third nationally</p>
-<p class="detail">Two-on-two debate on current-events resolutions, from trade and security policy to technology and human rights.</p>
+<ul class="awards">
+<li>Reached #3 in the nation in the NDCA Averill Rankings</li>
+<li>#1 junior in Florida and All-State, NSDA</li>
+<li>16 bids to the Tournament of Champions</li>
+<li>Semifinalist (top 4) at NDCA Nationals</li>
+<li>Semifinalist (top 4) at the Florida Forensic League State Championship</li>
+<li>Top 44 at NSDA Nationals</li>
+<li>2× Speaking for Service Award, given to 200 debaters nationally</li>
+<li>Premier Distinction as a sophomore and Academic All-American, NSDA</li>
+</ul>
 </div>
 </li>
 </ul>
