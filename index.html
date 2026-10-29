@@ -190,6 +190,11 @@ body.inner .hero { display: none; }
 .card-meta { font-size: .88rem; color: var(--faint); }
 .card-desc { font-size: .98rem; color: var(--muted); line-height: 1.55; flex: 1; }
 .card-go { font-size: .92rem; color: var(--link); margin-top: .4rem; }
+.card { position: relative; }
+.card a.card-go { text-decoration: none; }
+.card a.card-go:hover { text-decoration: underline; color: var(--link); }
+.card-cover::after { content: ""; position: absolute; inset: 0; border-radius: 10px; }
+.card-sub { position: relative; z-index: 1; margin-top: 0; font-size: .86rem; }
 </style>
 </head>
 <body>
@@ -242,7 +247,7 @@ body.inner .hero { display: none; }
 <ol class="num">
 
 <li><span>Ranked as high as third in the country in <a href="https://www.speechanddebate.org/public-forum-debate/">Public Forum debate</a></span></li>
-<li><span>Won the <a href="https://www.congressionalappchallenge.us/25-FL10/">Congressional App Challenge</a> with ShelterSpot, a shelter-finder app</span></li>
+<li><span>Won the <a href="https://www.congressionalappchallenge.us/25-FL10/">Congressional App Challenge</a> with <a href="https://www.shelterspot.dev/index.html">ShelterSpot</a>, a shelter-finder app</span></li>
 <li><span>Twice named Florida Journalist of the Year (Online and Emerging)</span></li>
 <li><span>Co-authored two <a href="#publications">NGO reports</a> for the UN Human Rights Committee</span></li>
 <li><span>Technology innovation at the <a href="https://www.hsncfl.org/">Homeless Services Network of Central Florida</a></span></li>
@@ -332,13 +337,6 @@ body.inner .hero { display: none; }
 <section class="view" data-view="portfolio" hidden>
 <div class="page-head"><h1>Portfolio</h1><p>Websites and products I’ve built.</p></div>
 <div class="cards">
-<a class="card" href="https://www.congressionalappchallenge.us/25-FL10/">
-<span class="card-bar"><i></i><i></i><i></i><span>congressionalappchallenge.us</span></span>
-<span class="card-name">ShelterSpot</span>
-<span class="card-meta">Winner, 2025 Congressional App Challenge, Florida’s 10th District</span>
-<span class="card-desc">An app that gives people experiencing homelessness real-time information on shelter availability, job opportunities, and support resources. Built with Connor Brady.</span>
-<span class="card-go">Read about it ↗</span>
-</a>
 <a class="card" href="https://clusion.io/">
 <span class="card-bar"><i></i><i></i><i></i><span>clusion.io</span></span>
 <span class="card-name">Clusion</span>
@@ -353,6 +351,14 @@ body.inner .hero { display: none; }
 <span class="card-desc">A nonprofit that makes speech and debate accessible to students around the world through free camps, learning resources, and an online community.</span>
 <span class="card-go">Visit outreachdebate.com ↗</span>
 </a>
+<div class="card">
+<span class="card-bar"><i></i><i></i><i></i><span>shelterspot.dev</span></span>
+<span class="card-name">ShelterSpot</span>
+<span class="card-meta">Winner, 2025 Congressional App Challenge</span>
+<span class="card-desc">Infrastructure for homelessness response, with real-time shelter availability, a jobs board, and resource coordination for cities, shelters, and service providers. Built with Connor Brady.</span>
+<a class="card-go card-cover" href="https://www.shelterspot.dev/index.html">Visit shelterspot.dev ↗</a>
+<a class="card-go card-sub" href="https://www.congressionalappchallenge.us/25-FL10/">Read about the App Challenge win ↗</a>
+</div>
 </div>
 </section>
 <section class="view" data-view="debate" hidden>
