@@ -175,6 +175,21 @@ body.inner .hero { display: none; }
 .intro .tag { margin-top: .7rem; font-size: .95rem; }
 .pair ol.num a, .links a { text-decoration: none; }
 .pair ol.num a:hover, .links a:hover { text-decoration: underline; text-decoration-color: currentColor; }
+.intro { align-items: stretch; }
+.intro > div { align-self: end; }
+.intro .photo { height: 0; min-height: 100%; width: auto; aspect-ratio: 4 / 5; }
+@media (max-width: 560px) { .intro .photo { height: auto; min-height: 0; width: 84px; align-self: start; } }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+@media (max-width: 860px) { .cards { grid-template-columns: 1fr; } }
+.card { display: flex; flex-direction: column; gap: .45rem; padding: 0 1.25rem 1.25rem; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink); background: transparent; transition: border-color .2s, transform .2s, box-shadow .2s; overflow: hidden; }
+.card:hover { color: var(--ink); border-color: var(--faint); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+.card-bar { display: flex; align-items: center; gap: .3rem; margin: 0 -1.25rem .6rem; padding: .55rem .9rem; border-bottom: 1px solid var(--line); font-size: .78rem; color: var(--faint); background: color-mix(in srgb, var(--line) 30%, transparent); }
+.card-bar i { width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
+.card-bar span { margin-left: .5rem; }
+.card-name { font-family: "Newsreader", Georgia, serif; font-size: 1.6rem; line-height: 1.1; letter-spacing: -0.015em; font-variation-settings: "opsz" 48; }
+.card-meta { font-size: .88rem; color: var(--faint); }
+.card-desc { font-size: .98rem; color: var(--muted); line-height: 1.55; flex: 1; }
+.card-go { font-size: .92rem; color: var(--link); margin-top: .4rem; }
 </style>
 </head>
 <body>
@@ -184,7 +199,9 @@ body.inner .hero { display: none; }
 <a class="brand" href="#">Nikhil Daniel</a>
 <ul class="nav" aria-label="Pages">
 <li><a href="#" data-nav="home">Overview</a></li>
-<li><a href="#research" data-nav="research">Research</a></li>
+<li><a href="#work" data-nav="work">Work</a></li>
+<li><a href="#publications" data-nav="publications">Publications</a></li>
+<li><a href="#portfolio" data-nav="portfolio">Portfolio</a></li>
 
 <li><a href="#debate" data-nav="debate">Debate</a></li>
 
@@ -225,9 +242,9 @@ body.inner .hero { display: none; }
 <ol class="num">
 
 <li><span>Ranked as high as third in the country in <a href="https://www.speechanddebate.org/public-forum-debate/">Public Forum debate</a></span></li>
-<li><span>Won the <a href="https://www.congressionalappchallenge.us/">Congressional App Challenge</a> with software for homeless service providers</span></li>
+<li><span>Won the <a href="https://www.congressionalappchallenge.us/25-FL10/">Congressional App Challenge</a> with ShelterSpot, a shelter-finder app</span></li>
 <li><span>Twice named Florida Journalist of the Year (Online and Emerging)</span></li>
-<li><span>Published through the <a href="https://www.ohchr.org/en/treaty-bodies/ccpr">UN Human Rights Committee</a></span></li>
+<li><span>Co-authored two <a href="#publications">NGO reports</a> for the UN Human Rights Committee</span></li>
 <li><span>Technology innovation at the <a href="https://www.hsncfl.org/">Homeless Services Network of Central Florida</a></span></li>
 <li><span>Co-founded <a href="https://clusion.io/">Clusion</a>, a debate prep platform</span></li>
 </ol>
@@ -236,7 +253,9 @@ body.inner .hero { display: none; }
 <div>
 <h2>Pages</h2>
 <div class="links">
-<a href="#research">Research</a>
+<a href="#work">Work</a>
+<a href="#publications">Publications</a>
+<a href="#portfolio">Portfolio</a>
 
 <a href="#debate">Debate</a>
 
@@ -251,14 +270,21 @@ body.inner .hero { display: none; }
 </div>
 </div>
 </section>
-<section class="view" data-view="research" hidden>
-<div class="page-head"><h1>Research</h1><p>AI, policy, and the people who live with both.</p></div>
+<section class="view" data-view="work" hidden>
+<div class="page-head"><h1>Work</h1><p>Research, policy, and public service.</p></div>
 <ul class="entries">
 <li>
 <span class="when">2026–</span>
 <div>
 <p class="what">AI and policy research, <a href="https://www.radcliffe.harvard.edu/">Harvard Radcliffe Institute</a></p>
 <p class="detail">With <a href="https://www.radcliffe.harvard.edu/people/orit-shaer">Orit Shaer</a>, the 2026–27 Sally Starling Seaver Fellow at Radcliffe and a professor of computer science at Wellesley College, where she directs the <a href="https://cs.wellesley.edu/~oshaer/">Human-Computer Interaction Lab</a>. Her Radcliffe project is a book, <cite>Weaving Wonder: Human Flourishing in the Age of Artificial Intelligence</cite>, which proposes a framework for designing and evaluating AI systems, drawing on cases from design, education, and emergency medicine.</p>
+</div>
+</li>
+<li>
+<span class="when">2026–</span>
+<div>
+<p class="what">Associate to Ambassador Chris Lu, <a href="https://iop.harvard.edu/">Institute of Politics</a></p>
+<p class="detail">Ambassador Lu is a resident fellow at the Harvard Kennedy School Institute of Politics. He previously served as U.S. Ambassador to the UN for Management and Reform, Deputy Secretary of Labor, and White House Cabinet Secretary under President Obama.</p>
 </div>
 </li>
 <li>
@@ -269,21 +295,65 @@ body.inner .hero { display: none; }
 </div>
 </li>
 <li>
-<span class="when">High school</span>
+<span class="when">2025–26</span>
 <div>
-<p class="what">Technology innovation and housing policy, <a href="https://www.hsncfl.org/">Homeless Services Network of Central Florida</a></p>
-<p class="detail">HSN is the lead agency for Central Florida’s response to homelessness across Orange, Osceola, and Seminole counties. It funds shelter and housing programs, runs the region’s coordinated-entry system, and tracks homelessness data to inform policy. I worked on technology innovations there alongside research on housing policy.</p>
+<p class="what">System Improvement and Tech Innovations Intern, <a href="https://www.hsncfl.org/">Homeless Services Network of Central Florida</a></p>
+<p class="detail">HSN is the lead agency for Central Florida’s response to homelessness across Orange, Osceola, and Seminole counties. It funds shelter and housing programs, runs the region’s coordinated-entry system, and tracks homelessness data to inform policy. I worked on system improvements and technology innovation alongside research on housing policy.</p>
 </div>
 </li>
 <li>
-<span class="when">High school</span>
+<span class="when">Summer 2024</span>
 <div>
-<p class="what">Winner, <a href="https://www.congressionalappchallenge.us/">Congressional App Challenge</a>, Florida’s 10th District</p>
-<p class="detail">Selected by Rep. Maxwell Frost as the winning app for his district in the House of Representatives’ nationwide coding competition for middle and high school students. The app helps homeless service providers manage their work.</p>
+<p class="what">Legislative Intern, Florida House of Representatives</p>
+<p class="detail">Interned for Representative Anna V. Eskamani of District 42.</p>
 </div>
 </li>
 </ul>
-
+</section>
+<section class="view" data-view="publications" hidden>
+<div class="page-head"><h1>Publications</h1><p>Reports submitted to the United Nations Human Rights Committee.</p></div>
+<ul class="entries">
+<li>
+<span class="when">March 2025</span>
+<div>
+<p class="what"><a href="https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=INT%2FCCPR%2FCSS%2FBFA%2F62318&amp;Lang=en">NGO Report on Burkina Faso for the 143rd Session of the Human Rights Committee</a> ↗</p>
+<p class="detail">Co-authored on behalf of CVIA and presented at the UN Office at Geneva. The report documents political violence and the suspension of elections under military rule, gaps in civic education, and barriers to women’s participation in political life.</p>
+</div>
+</li>
+<li>
+<span class="when">October 2024</span>
+<div>
+<p class="what"><a href="https://tbinternet.ohchr.org/_layouts/15/treatybodyexternal/Download.aspx?symbolno=INT%2FCCPR%2FCSS%2FPAK%2F59846&amp;Lang=en">NGO Report on Pakistan for the 142nd Session of the Human Rights Committee</a> ↗</p>
+<p class="detail">Co-authored on behalf of CVIA and presented at the UN Office at Geneva. The report covers unequal political representation for women and girls, weak civic education, political violence, limits on free expression, and corruption.</p>
+</div>
+</li>
+</ul>
+</section>
+<section class="view" data-view="portfolio" hidden>
+<div class="page-head"><h1>Portfolio</h1><p>Websites and products I’ve built.</p></div>
+<div class="cards">
+<a class="card" href="https://www.congressionalappchallenge.us/25-FL10/">
+<span class="card-bar"><i></i><i></i><i></i><span>congressionalappchallenge.us</span></span>
+<span class="card-name">ShelterSpot</span>
+<span class="card-meta">Winner, 2025 Congressional App Challenge, Florida’s 10th District</span>
+<span class="card-desc">An app that gives people experiencing homelessness real-time information on shelter availability, job opportunities, and support resources. Built with Connor Brady.</span>
+<span class="card-go">Read about it ↗</span>
+</a>
+<a class="card" href="https://clusion.io/">
+<span class="card-bar"><i></i><i></i><i></i><span>clusion.io</span></span>
+<span class="card-name">Clusion</span>
+<span class="card-meta">Co-founder</span>
+<span class="card-desc">A prep and rankings platform for competitive speech and debate, with an evidence bank, ELO rankings, an AI card cutter, judge reviews, and a coach and judge marketplace.</span>
+<span class="card-go">Visit clusion.io ↗</span>
+</a>
+<a class="card" href="https://www.outreachdebate.com/">
+<span class="card-bar"><i></i><i></i><i></i><span>outreachdebate.com</span></span>
+<span class="card-name">Outreach Debate</span>
+<span class="card-meta">Advisory board member, former executive</span>
+<span class="card-desc">A nonprofit that makes speech and debate accessible to students around the world through free camps, learning resources, and an online community.</span>
+<span class="card-go">Visit outreachdebate.com ↗</span>
+</a>
+</div>
 </section>
 <section class="view" data-view="debate" hidden>
 <div class="page-head"><h1>Debate</h1><p>Arguing for a living, so far without pay.</p></div>
@@ -343,7 +413,7 @@ draw(0);
 (function () {
 var views = document.querySelectorAll("[data-view]");
 var navs = document.querySelectorAll("[data-nav]");
-var titles = { home: "Nikhil Daniel", research: "Research | Nikhil Daniel", writing: "Writing | Nikhil Daniel", debate: "Debate | Nikhil Daniel", miscellaneous: "Miscellaneous | Nikhil Daniel" };
+var titles = { home: "Nikhil Daniel", work: "Work | Nikhil Daniel", publications: "Publications | Nikhil Daniel", portfolio: "Portfolio | Nikhil Daniel", debate: "Debate | Nikhil Daniel" };
 var first = true;
 function show() {
 var name = (location.hash || "").replace("#", "");
@@ -386,16 +456,16 @@ var left = pairs[0].querySelectorAll("li"), right = pairs[1].querySelectorAll("l
 function link(a, b) { a.addEventListener("mouseenter", function () { a.classList.add("lit"); if (b) b.classList.add("lit"); }); a.addEventListener("mouseleave", function () { a.classList.remove("lit"); if (b) b.classList.remove("lit"); }); }
 for (var i = 0; i < left.length; i++) { link(left[i], right[i]); if (right[i]) link(right[i], left[i]); }
 }
-document.querySelectorAll(".view").forEach(function (v) { var n = 0; v.querySelectorAll(".bio p, .pair li, .entries li, .page-head, .sub").forEach(function (el) { el.classList.add("reveal"); el.style.setProperty("--i", n++); }); });
+document.querySelectorAll(".view").forEach(function (v) { var n = 0; v.querySelectorAll(".bio p, .pair li, .entries li, .page-head, .sub, .card").forEach(function (el) { el.classList.add("reveal"); el.style.setProperty("--i", n++); }); });
 
-var PAGE_NAMES = { home: "Overview", research: "Research", writing: "Writing", debate: "Debate", miscellaneous: "Miscellaneous" };
+var PAGE_NAMES = { home: "Overview", work: "Work", publications: "Publications", portfolio: "Portfolio", debate: "Debate" };
 var index = [];
 document.querySelectorAll(".view").forEach(function (v) {
 var view = v.getAttribute("data-view");
-v.querySelectorAll(".bio p, .pair li, .entries li, .sub").forEach(function (el) {
+v.querySelectorAll(".bio p, .pair li, .entries li, .sub, .card").forEach(function (el) {
 var src = el.matches(".entries li") ? (el.querySelector("div") || el) : el;
 var text = src.textContent.replace(/\s+/g, " ").trim();
-var titleEl = el.querySelector(".what, h2");
+var titleEl = el.querySelector(".what, h2, .card-name");
 var title = titleEl ? titleEl.textContent.replace(/\s+/g, " ").trim() : "";
 var section = el.closest(".pair > div"); var sh = section ? section.querySelector("h2") : null;
 if (!title) title = sh ? sh.textContent.trim() : (el.matches(".bio p") ? "About" : PAGE_NAMES[view]);
@@ -404,7 +474,9 @@ index.push({ view: view, el: el, text: text, title: title });
 });
 var commands = [
 { label: "Overview", hint: "Page", run: function () { location.hash = ""; } },
-{ label: "Research", hint: "Page", run: function () { location.hash = "research"; } },
+{ label: "Work", hint: "Page", run: function () { location.hash = "work"; } },
+{ label: "Publications", hint: "Page", run: function () { location.hash = "publications"; } },
+{ label: "Portfolio", hint: "Page", run: function () { location.hash = "portfolio"; } },
 
 { label: "Debate", hint: "Page", run: function () { location.hash = "debate"; } },
 
@@ -469,7 +541,7 @@ if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(
 var tag = (e.target.tagName || "").toLowerCase();
 if (pal.classList.contains("open") || tag === "input" || tag === "textarea" || e.metaKey || e.ctrlKey || e.altKey) return;
 if (e.key === "/") { e.preventDefault(); open(); }
-var map = { "1": "", "2": "research", "3": "debate" };
+var map = { "1": "", "2": "work", "3": "publications", "4": "portfolio", "5": "debate" };
 if (map.hasOwnProperty(e.key)) location.hash = map[e.key];
 });
 })();
